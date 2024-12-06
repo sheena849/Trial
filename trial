@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+
+import ipdb
+
+from classes.many_to_many import Article
+from classes.many_to_many import Author
+from classes.many_to_many import Magazine
+
+if __name__ == '__main__':
+    print("HELLO! :) Let's debug :vibing_potato:")
+
+    # Create sample authors
+    author1 = Author("Jane Doe")
+    author2 = Author("John Smith")
+
+    # Create sample magazines
+    mag1 = Magazine("Tech Today", "Technology")
+    mag2 = Magazine("Health Weekly", "Health")
+
+    # Create articles and associate them with authors and magazines
+    article1 = author1.add_article(mag1, "The Future of AI")
+    article2 = author1.add_article(mag2, "Healthy Living Tips")
+    article3 = author2.add_article(mag1, "Blockchain Innovations")
+    article4 = author1.add_article(mag1, "Cybersecurity 101")
+
+    # Sample outputs for debugging
+    print("Author1 Articles:", [article.title for article in author1.articles()])
+    print("Author1 Magazines:", [mag.name for mag in author1.magazines()])
+    print("Magazine1 Articles:", [article.title for article in mag1.articles()])
+    print("Magazine1 Contributors:", [author.name for author in mag1.contributors()])
+    print("Top Publisher:", Magazine.top_publisher().name)
+
+    # Don't remove this line; it's for debugging!
+    ipdb.set_trace()
